@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   pname = "iterm2";
-  version = "3.0.14";
+  version = "3.3.8";
 
   src = fetchFromGitHub {
     owner = "gnachman";
