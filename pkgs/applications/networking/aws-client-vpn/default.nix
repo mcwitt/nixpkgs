@@ -4,9 +4,11 @@
 , curl
 , dpkg
 , fetchurl
+, gtk3
 , icu
 , kerberos
 , lttng-ust
+, wrapGAppsHook
 , zlib
 }:
 
@@ -22,10 +24,12 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     autoPatchelfHook
     dpkg
+    wrapGAppsHook
   ];
 
   buildInputs = [
     curl
+    gtk3
     icu
     kerberos
     lttng-ust
@@ -46,6 +50,7 @@ stdenv.mkDerivation rec {
   '';
 
   preFixup = ''
+    patchelf --add-needed libgdk-3.so "$out/awsvpnclient/AWS VPN Client"
     patchelf --add-needed libicuuc.so $out/awsvpnclient/System.Globalization.Native.so
     patchelf --add-needed libicuuc.so $out/awsvpnclient/Service/System.Globalization.Native.so
   '';
