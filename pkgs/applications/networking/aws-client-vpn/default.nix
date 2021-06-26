@@ -4,6 +4,7 @@
 , curl
 , dpkg
 , fetchurl
+, icu
 , kerberos
 , lttng-ust
 , zlib
@@ -25,6 +26,7 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     curl
+    icu
     kerberos
     lttng-ust
     stdenv.cc.cc.lib
@@ -41,6 +43,11 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     ln -s "$out/awsvpnclient/AWS VPN Client" "$out/bin/AWS VPN Client"
     ln -s "$out/awsvpnclient/Service/ACVC.GTK.Service" "$out/bin/ACVC.GTK.Service"
+  '';
+
+  preFixup = ''
+    patchelf --add-needed libicuuc.so $out/awsvpnclient/System.Globalization.Native.so
+    patchelf --add-needed libicuuc.so $out/awsvpnclient/Service/System.Globalization.Native.so
   '';
 
   meta = with lib; {
