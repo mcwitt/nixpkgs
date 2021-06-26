@@ -7,6 +7,7 @@
 , gtk3
 , icu
 , kerberos
+, libredirect
 , lttng-ust
 , wrapGAppsHook
 , zlib
@@ -49,10 +50,19 @@ stdenv.mkDerivation rec {
     ln -s "$out/awsvpnclient/Service/ACVC.GTK.Service" "$out/bin/ACVC.GTK.Service"
   '';
 
-  preFixup = ''
+  dontWrapGApps = true; # need to wrap manually to add redirects
+
+  postFixup = ''
     patchelf --add-needed libgdk-3.so "$out/awsvpnclient/AWS VPN Client"
     patchelf --add-needed libicuuc.so $out/awsvpnclient/System.Globalization.Native.so
     patchelf --add-needed libicuuc.so $out/awsvpnclient/Service/System.Globalization.Native.so
+
+    for file in $out/bin/*; do
+      wrapProgram "$file" \
+        --set LD_PRELOAD "${libredirect}/lib/libredirect.so" \
+        --set NIX_REDIRECTS /opt/awsvpnclient=$out/awsvpnclient \
+        "''${gappsWrapperArgs[@]}"
+    done
   '';
 
   meta = with lib; {
