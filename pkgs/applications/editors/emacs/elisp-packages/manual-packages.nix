@@ -233,6 +233,10 @@
 
   tramp = callPackage ./tramp { };
 
+  tree-sitter-langs = callPackage ./tree-sitter-langs { };
+
+  tsc = callPackage ./tsc { };
+
   youtube-dl = callPackage ./youtube-dl { };
 
   # From old emacsPackages (pre emacsPackagesNg)
