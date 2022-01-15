@@ -24,7 +24,7 @@ let
     owner = "emacs-tree-sitter";
     repo = "elisp-tree-sitter";
     rev = version;
-    sha256 = "sha256-SNv0NBJ4vjrlH5TaiekRRT8Tfk9cfmZxRhZdf8Ye+58=";
+    sha256 = "sha256-tAohHdAsy/HTFFPSNOo0UyrdolH8h0KF2ekFXuLltBE=";
   };
 
   tsc = melpaBuild rec {
@@ -66,7 +66,7 @@ let
       rm -r $out/lib
     '';
 
-    cargoSha256 = "sha256-if368t/NRG6IT1vqqjoHw6eOG3ElXjg+cIiggeYwWvY=";
+    cargoSha256 = "sha256-7UOhs3wx6fGvqPjNxUKoEHwPtiJ5zgLFPwDSvhYlmis=";
   };
 in symlinkJoin {
   name = "tsc";
