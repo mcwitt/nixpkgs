@@ -42,7 +42,6 @@ let
     inherit src;
 
     pname = "tsc-dyn";
-    commit = version;
 
     nativeBuildInputs = [ clang ];
     sourceRoot = "source/core";
