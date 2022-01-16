@@ -14,12 +14,6 @@ with llvmPackages;
 let
   version = "0.16.1";
 
-  meta = {
-    description = "The core APIs of the Emacs binding for tree-sitter.";
-    license = mit;
-    maintainers = with maintainers; [ pimeys ];
-  };
-
   src = fetchFromGitHub {
     owner = "emacs-tree-sitter";
     repo = "elisp-tree-sitter";
@@ -70,5 +64,12 @@ let
   };
 in symlinkJoin {
   name = "tsc";
+
+  meta = {
+    description = "The core APIs of the Emacs binding for tree-sitter.";
+    license = mit;
+    maintainers = with maintainers; [ pimeys ];
+  };
+
   paths = [ tsc tsc-dyn ];
 }
