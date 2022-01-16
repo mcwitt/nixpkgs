@@ -44,7 +44,8 @@ in melpaBuild rec {
   recipe = writeText "recipe" ''
     (tree-sitter-langs
     :repo "emacs-tree-sitter/tree-sitter-langs"
-    :fetcher github)
+    :fetcher github
+    :files (:defaults "queries"))
   '';
 
   postPatch = ''
