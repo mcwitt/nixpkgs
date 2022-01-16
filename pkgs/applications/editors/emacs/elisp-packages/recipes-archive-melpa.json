@@ -106853,6 +106853,35 @@
   }
  },
  {
+  "ename": "tree-sitter-langs",
+  "commit": "cb5169a41c3284f1fe1887cd2d32f9e98e34fbe0",
+  "sha256": "0dqz421vwbgmp83nib9jigwi0rayb9hqsralwhj0139w6jkvxmmb",
+  "fetcher": "github",
+  "repo": "emacs-tree-sitter/tree-sitter-langs",
+  "unstable": {
+   "version": [
+    20210918,
+    1621
+   ],
+   "deps": [
+    "tree-sitter"
+   ],
+   "commit": "2b845a70080c0edd66f13200b9dc8d6d0c3f42ce",
+   "sha256": "0w3jzy4n445nrbcj7i46nbg7jk81gjqjs6zahsjnal8dhyjqaymi"
+  },
+  "stable": {
+   "version": [
+    0,
+    10
+   ],
+   "deps": [
+    "tree-sitter"
+   ],
+   "commit": "28e98d52e8516d73cce76e7ce5c6294a9728bb56",
+   "sha256": "1zy1wjw6ixpl5mw8f3drp47w256xbbzgxrgs2kpgj0w7wif10yjc"
+  }
+ },
+ {
   "ename": "treefactor",
   "commit": "e3e956cbbaed3af8beeb927a730cb553df1fac21",
   "sha256": "1jfsiv2adj0p2b118qmfzxljz523q1xcjq9x60h1a4xymm3kqb0y",
@@ -107390,6 +107419,29 @@
    ],
    "commit": "786b88fffc553e122868a1c4883f14136a040df6",
    "sha256": "1103gb66db91rnqvs1adqzdsgjh14apb171zghd1dzswhjgiff8q"
+  }
+ },
+ {
+  "ename": "tsc",
+  "commit": "cb5169a41c3284f1fe1887cd2d32f9e98e34fbe0",
+  "sha256": "0di9v57sn2b6dvgf7id409drk9ir65brv2mdigk54gra8801fk64",
+  "fetcher": "github",
+  "repo": "emacs-tree-sitter/elisp-tree-sitter",
+  "unstable": {
+   "version": [
+    20210912,
+    1211
+   ],
+   "commit": "2acca5c8d2e3dc66d4d0a99831b33140b5a5f973",
+   "sha256": "00qlrjh3my8w96lvxx3bfx8pshr58irzmrnvr8qrkwzyv3hs0rbl"
+  },
+  "stable": {
+   "version": [
+    0,
+    15
+   ],
+   "commit": "2acca5c8d2e3dc66d4d0a99831b33140b5a5f973",
+   "sha256": "00qlrjh3my8w96lvxx3bfx8pshr58irzmrnvr8qrkwzyv3hs0rbl"
   }
  },
  {
