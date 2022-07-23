@@ -229,17 +229,12 @@ let
       # 2) Force static protobuf linkage to prevent crashes on loading multiple extensions
       #    in the same python program due to duplicate protobuf DBs.
       # 3) Patch python path in the compiler driver.
-      # 4) Patch tensorflow sources to work with later versions of protobuf. See
-      #    https://github.com/google/jax/issues/9534. Note that this should be
-      #    removed on the next release after 0.3.0.
       preBuild = ''
         for src in ./jaxlib/*.{cc,h}; do
           sed -i 's@include/pybind11@pybind11@g' $src
         done
         sed -i 's@-lprotobuf@-l:libprotobuf.a@' ../output/external/org_tensorflow/third_party/systemlibs/protobuf.BUILD
         sed -i 's@-lprotoc@-l:libprotoc.a@' ../output/external/org_tensorflow/third_party/systemlibs/protobuf.BUILD
-        substituteInPlace ../output/external/org_tensorflow/tensorflow/compiler/xla/python/pprof_profile_builder.cc \
-          --replace "status.message()" "std::string{status.message()}"
       '' + lib.optionalString cudaSupport ''
         patchShebangs ../output/external/org_tensorflow/third_party/gpus/crosstool/clang/bin/crosstool_wrapper_driver_is_not_gcc.tpl
       '';
