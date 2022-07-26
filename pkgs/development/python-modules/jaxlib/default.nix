@@ -8,6 +8,7 @@
 , binutils
 , buildBazelPackage
 , buildPythonPackage
+, curl
 , cython
 , fetchFromGitHub
 , git
@@ -103,6 +104,7 @@ let
     ];
 
     buildInputs = [
+      curl
       double-conversion
       giflib
       grpc
