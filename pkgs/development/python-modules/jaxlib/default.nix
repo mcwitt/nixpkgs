@@ -168,7 +168,8 @@ let
       # "com_github_googleapis_googleapis"
       # "com_github_googlecloudplatform_google_cloud_cpp"
       "com_github_grpc_grpc"
-      "com_google_protobuf"
+      # Fails with the error: /build/output/external/com_google_protobuf/BUILD.bazel:50:8: in cmd attribute of genrule rule @com_google_protobuf//:link_proto_files: $(PROTOBUF_INCLUDE_PATH) not defined
+      # "com_google_protobuf"
       # Fails with the error: external/org_tensorflow/tensorflow/core/profiler/utils/tf_op_utils.cc:46:49: error: no matching function for call to 're2::RE2::FullMatch(absl::lts_2020_02_25::string_view&, re2::RE2&)'
       # "com_googlesource_code_re2"
       "curl"
