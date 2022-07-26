@@ -259,7 +259,7 @@ buildPythonPackage {
   inherit meta pname version;
   format = "wheel";
 
-  src = "${bazel-build}/jaxlib-${version}-cp${builtins.replaceStrings ["."] [""] python.pythonVersion}-none-manylinux2010_${stdenv.targetPlatform.linuxArch}.whl";
+  src = "${bazel-build}/jaxlib-${version}-cp${builtins.replaceStrings ["."] [""] python.pythonVersion}-none-manylinux2014_${stdenv.targetPlatform.linuxArch}.whl";
 
   # Note that cudatoolkit is necessary since jaxlib looks for "ptxas" in $PATH.
   # See https://github.com/NixOS/nixpkgs/pull/164176#discussion_r828801621 for
