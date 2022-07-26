@@ -219,9 +219,9 @@ let
     fetchAttrs = {
       sha256 =
         if cudaSupport then
-          "sha256-Ald+vplRx/DDG/7TfHAqD4Gktb1BGnf7FSCCJzSI0eo="
+          "sha256-FOQT6w7wmS/4lIs1EZIAyycF0HRdbcg/w/34esxUKyw="
         else
-          "sha256-6acSbBNcUBw177HMVOmpV7pUfP1aFSe5cP6/zWFdGFo=";
+          "sha256-MSQ4rwGVuekvH3ZjWlkLW041UkfTKtoXtQnSyXlWCes=";
     };
 
     buildAttrs = {
