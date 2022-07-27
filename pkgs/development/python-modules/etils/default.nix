@@ -4,16 +4,16 @@
 , pythonOlder
 , flit-core
 
-# tests
+  # tests
 , chex
 , pytest-subtests
 , pytest-xdist
 , pytestCheckHook
 , yapf
 
-# optional
+  # optional
 , jupyter
-# TODO: , mediapy
+  # TODO: , mediapy
 , numpy
 , importlib-resources
 , typing-extensions
@@ -137,6 +137,6 @@ buildPythonPackage rec {
     description = "Collection of eclectic utils for python";
     homepage = "https://github.com/google/etils";
     license = licenses.asl20;
-    maintainers = with maintainers; [ ];
+    maintainers = with maintainers; [ mcwitt ];
   };
 }
