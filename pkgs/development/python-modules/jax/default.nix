@@ -2,6 +2,7 @@
 , absl-py
 , blas
 , buildPythonPackage
+, etils
 , fetchFromGitHub
 , fetchpatch
 , jaxlib
@@ -38,11 +39,12 @@ buildPythonPackage rec {
   # CPU wheel is packaged.
   propagatedBuildInputs = [
     absl-py
+    etils
     numpy
     opt-einsum
     scipy
     typing-extensions
-  ];
+  ] ++ etils.optional-dependencies.epath;
 
   checkInputs = [
     jaxlib
