@@ -278,6 +278,7 @@ buildPythonPackage {
 
   propagatedBuildInputs = [
     absl-py
+    curl
     double-conversion
     flatbuffers
     giflib
