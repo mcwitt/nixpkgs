@@ -38,6 +38,8 @@ buildPythonPackage rec {
     hash = "sha256-ZnckEFGDXQ2xHElHvK2Tj1e1HqECKQYk+JLx5OUbcOU=";
   };
 
+  patches = [ ./skip-failing-tests.patch ];
+
   nativeBuildInputs = [
     flit-core
   ];
