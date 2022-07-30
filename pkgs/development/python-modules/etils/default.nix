@@ -6,6 +6,7 @@
 
   # tests
 , chex
+, jaxlib
 , pytest-subtests
 , pytest-xdist
 , pytestCheckHook
@@ -124,6 +125,7 @@ buildPythonPackage rec {
 
   checkInputs = [
     chex
+    jaxlib
     pytest-subtests
     pytest-xdist
     pytestCheckHook
