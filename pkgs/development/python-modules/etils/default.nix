@@ -38,8 +38,6 @@ buildPythonPackage rec {
     hash = "sha256-ZnckEFGDXQ2xHElHvK2Tj1e1HqECKQYk+JLx5OUbcOU=";
   };
 
-  patches = [ ./skip-failing-tests.patch ];
-
   nativeBuildInputs = [
     flit-core
   ];
@@ -73,6 +71,12 @@ buildPythonPackage rec {
     yapf
   ]
   ++ passthru.optional-dependencies.all;
+
+  disabledTests = [
+    "test_repr"
+    "test_public_access"
+    "test_resource_path"
+  ];
 
   meta = with lib; {
     description = "Collection of eclectic utils for python";
