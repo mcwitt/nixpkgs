@@ -13,7 +13,7 @@
 
   # optional
 , jupyter
-  # TODO: , mediapy
+, mediapy
 , numpy
 , importlib-resources
 , typing-extensions
@@ -49,7 +49,7 @@ buildPythonPackage rec {
     ecolab = [
       jupyter
       numpy
-      # TODO: mediapy
+      mediapy
     ]
     ++ enp
     ++ epy;
@@ -121,8 +121,6 @@ buildPythonPackage rec {
   pythonImportsCheck = [
     "etils"
   ];
-
-  doCheck = false;
 
   checkInputs = [
     chex
