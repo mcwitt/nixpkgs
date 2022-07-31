@@ -73,9 +73,9 @@ buildPythonPackage rec {
   ++ passthru.optional-dependencies.all;
 
   disabledTests = [
-    "test_repr"
-    "test_public_access"
-    "test_resource_path"
+    "test_repr" # known to fail on Python 3.10, see https://github.com/google/etils/issues/143
+    "test_public_access" # requires network access
+    "test_resource_path" # known to fail on Python 3.10, see https://github.com/google/etils/issues/143
   ];
 
   meta = with lib; {
