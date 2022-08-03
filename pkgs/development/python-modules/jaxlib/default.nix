@@ -54,6 +54,7 @@ let
   version = "0.3.15";
 
   meta = with lib; {
+    broken = stdenv.isDarwin;
     description = "JAX is Autograd and XLA, brought together for high-performance machine learning research.";
     homepage = "https://github.com/google/jax";
     license = licenses.asl20;
