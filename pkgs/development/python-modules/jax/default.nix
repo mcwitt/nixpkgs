@@ -39,7 +39,9 @@ buildPythonPackage rec {
   # CPU wheel is packaged.
   propagatedBuildInputs = [
     absl-py
-    etils
+    (etils.overrideAttrs (_: {
+      doInstallCheck = false; # needed to break dependency cycle
+    }))
     numpy
     opt-einsum
     scipy
