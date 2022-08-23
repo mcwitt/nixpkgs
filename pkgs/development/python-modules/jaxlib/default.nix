@@ -15,6 +15,7 @@
 , IOKit
 , jsoncpp
 , nsync
+, openssl
 , pybind11
 , setuptools
 , symlinkJoin
@@ -113,6 +114,7 @@ let
       jsoncpp
       libjpeg_turbo
       numpy
+      openssl
       pkgs.flatbuffers
       pkgs.protobuf
       pybind11
