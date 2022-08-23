@@ -244,7 +244,7 @@ let
       #    loading multiple extensions in the same python program due to duplicate protobuf DBs.
       # 3) Patch python path in the compiler driver.
       preBuild = ''
-        for src in ./jaxlib/*.{cc,h}; do
+        for src in ./jaxlib/*.{cc,h} ./jaxlib/cuda/*.{cc,h}; do
           sed -i 's@include/pybind11@pybind11@g' $src
         done
       '' + lib.optionalString cudaSupport ''
