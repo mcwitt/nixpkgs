@@ -14,6 +14,7 @@
 , git
 , IOKit
 , jsoncpp
+, nsync
 , pybind11
 , setuptools
 , symlinkJoin
@@ -124,6 +125,8 @@ let
       cudnn
     ] ++ lib.optionals stdenv.isDarwin [
       IOKit
+    ] ++ lib.optionals (!stdenv.isDarwin) [
+      nsync
     ];
 
     postPatch = ''
@@ -163,7 +166,7 @@ let
     # Copy-paste from TF derivation.
     # Most of these are not really used in jaxlib compilation but it's simpler to keep it
     # 'as is' so that it's more compatible with TF derivation.
-    TF_SYSTEM_LIBS = lib.concatStringsSep "," [
+    TF_SYSTEM_LIBS = lib.concatStringsSep "," ([
       "absl_py"
       "astor_archive"
       "astunparse_archive"
@@ -179,7 +182,6 @@ let
       "cython"
       "dill_archive"
       "double_conversion"
-      "enum34_archive"
       "flatbuffers"
       "functools32_archive"
       "gast_archive"
@@ -190,11 +192,9 @@ let
       "libjpeg_turbo"
       "lmdb"
       "nasm"
-      # "nsync" # not packaged in nixpkgs
       "opt_einsum_archive"
       "org_sqlite"
       "pasta"
-      "pcre"
       "png"
       "pybind11"
       "six_archive"
@@ -204,7 +204,9 @@ let
       "typing_extensions_archive"
       "wrapt"
       "zlib"
-    ];
+    ] ++ lib.optionals (!stdenv.isDarwin) [
+      "nsync" # fails to build on darwin
+    ]);
 
     # Make sure Bazel knows about our configuration flags during fetching so that the
     # relevant dependencies can be downloaded.
