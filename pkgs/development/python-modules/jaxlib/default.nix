@@ -276,7 +276,7 @@ let
   };
   platformTag =
     if stdenv.targetPlatform.isLinux then
-      "manylinux2010_${stdenv.targetPlatform.linuxArch}"
+      "manylinux2014_${stdenv.targetPlatform.linuxArch}"
     else if stdenv.system == "x86_64-darwin" then
       "macosx_10_9_${stdenv.targetPlatform.linuxArch}"
     else if stdenv.system == "aarch64-darwin" then
