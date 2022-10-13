@@ -240,7 +240,7 @@ let
         if cudaSupport then
           "sha256-tdO4YjO985zbittb16RFWgxgUBrHYQfv5gRsA4IAkTk="
         else if stdenv.isDarwin then
-          "sha256-+XYxfXBCASueqDGg0Zqcmpf7zmemYM6xCE+x0rl3j34="
+          "sha256-PfGeNf+t7WhJvBFhSV3JND/ClWf/i+orKVb3glzfg3Y="
         else
           "sha256-liRxmjwm0OmVMfgoGXx+nGBdW2fzzP/d4zmK6A59HAM=";
     };
