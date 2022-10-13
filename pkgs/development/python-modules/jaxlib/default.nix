@@ -43,7 +43,7 @@
   # CUDA flags:
 , cudaCapabilities ? [ "sm_35" "sm_50" "sm_60" "sm_70" "sm_75" "compute_80" ]
 , cudaSupport ? false
-, cudaPackages ? {}
+, cudaPackages ? { }
 
   # MKL:
 , mklSupport ? true
@@ -53,7 +53,7 @@ let
   inherit (cudaPackages) cudatoolkit cudnn nccl;
 
   pname = "jaxlib";
-  version = "0.3.15";
+  version = "0.3.22";
 
   meta = with lib; {
     description = "JAX is Autograd and XLA, brought together for high-performance machine learning research.";
@@ -96,7 +96,7 @@ let
       owner = "google";
       repo = "jax";
       rev = "${pname}-v${version}";
-      sha256 = "sha256-pIl7zzl82w5HHnJadH2vtCT4mYFd5YmM9iHC2GoJD6s=";
+      sha256 = "sha256-bnczJ8ma/UMKhA5MUQ6H4az+Tj+By14ZTG6lQQwptQs=";
     };
 
     nativeBuildInputs = [
@@ -229,7 +229,10 @@ let
       # bazel depends on the compiler frontend automatically selecting these flags based on file
       # extension but our clang doesn't.
       # https://github.com/NixOS/nixpkgs/issues/150655
-      "--cxxopt=-x" "--cxxopt=c++" "--host_cxxopt=-x" "--host_cxxopt=c++"
+      "--cxxopt=-x"
+      "--cxxopt=c++"
+      "--host_cxxopt=-x"
+      "--host_cxxopt=c++"
     ];
 
     fetchAttrs = {
@@ -239,7 +242,7 @@ let
         else if stdenv.isDarwin then
           "sha256-+XYxfXBCASueqDGg0Zqcmpf7zmemYM6xCE+x0rl3j34="
         else
-          "sha256-La1wC8X5aGK5mXvYy/kO8n4J+zaRZEc/DAX5zaH1D5A=";
+          "sha256-liRxmjwm0OmVMfgoGXx+nGBdW2fzzP/d4zmK6A59HAM=";
     };
 
     buildAttrs = {
@@ -293,7 +296,9 @@ buildPythonPackage {
   inherit meta pname version;
   format = "wheel";
 
-  src = "${bazel-build}/jaxlib-${version}-cp${builtins.replaceStrings ["."] [""] python.pythonVersion}-none-${platformTag}.whl";
+  src =
+    let pythonVersion = "cp${builtins.replaceStrings ["."] [""] python.pythonVersion}";
+    in "${bazel-build}/jaxlib-${version}-${pythonVersion}-${pythonVersion}-${platformTag}.whl";
 
   # Note that cudatoolkit is necessary since jaxlib looks for "ptxas" in $PATH.
   # See https://github.com/NixOS/nixpkgs/pull/164176#discussion_r828801621 for
