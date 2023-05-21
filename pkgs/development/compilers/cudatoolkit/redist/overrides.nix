@@ -104,6 +104,14 @@ in
     ];
     # libcuda needs to be resolved during runtime
     autoPatchelfIgnoreMissingDeps = true;
+    postInstall =
+      let
+        majorMinorPatch = v: "${lib.versions.majorMinor v}.${lib.versions.patch v}";
+      in
+      ''
+        sed -i 's|"$CUDA_INSTALL_DIR"/nsight-systems-#VERSION_RSPLIT#|'$out'/nsight-systems/${majorMinorPatch prev.nsight_systems.version}|' $out/bin/nsys $out/bin/nsys-ui
+      '';
+
   });
 
   nvidia_driver = prev.nvidia_driver.overrideAttrs (oldAttrs: {
